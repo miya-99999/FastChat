@@ -91,7 +91,7 @@ class MatchPair:
 def load_questions(question_file: str, begin: Optional[int], end: Optional[int]):
     """Load questions from a file."""
     questions = []
-    with open(question_file, "r") as ques_file:
+    with open(question_file, "r", encoding='utf-8') as ques_file: # fix encoding issue
         for line in ques_file:
             if line:
                 q = json.loads(line)
