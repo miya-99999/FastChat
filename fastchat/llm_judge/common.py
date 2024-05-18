@@ -114,7 +114,7 @@ def load_model_answers(answer_dir: str):
     for filename in filenames:
         model_name = os.path.basename(filename)[:-6]
         answer = {}
-        with open(filename) as fin:
+        with open(filename, encoding='utf-8') as fin: # fix encoding issue
             for line in fin:
                 line = json.loads(line)
                 answer[int(line["question_id"])] = line
@@ -130,7 +130,7 @@ def load_judge_prompts(prompt_file: str):
     Dict[judge_name: str -> dict]
     """
     prompts = {}
-    with open(prompt_file) as fin:
+    with open(prompt_file, encoding='utf-8') as fin: # fix encoding issue
         for line in fin:
             line = json.loads(line)
             prompts[line["name"]] = line
