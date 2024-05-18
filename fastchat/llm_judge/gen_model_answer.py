@@ -147,6 +147,11 @@ def get_model_answers(
                         output_ids,
                         spaces_between_special_tokens=False,
                     )
+                    
+                    # 入力と出力を表示してデバッグ
+                    print("Prompt: ", prompt)
+                    print("Output: ", output)
+
                     if conv.stop_str and isinstance(conv.stop_str, list):
                         stop_str_indices = sorted(
                             [
