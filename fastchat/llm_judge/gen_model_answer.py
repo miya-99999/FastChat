@@ -149,8 +149,10 @@ def get_model_answers(
                     )
                     
                     # 入力と出力を表示してデバッグ
-                    print("Prompt: ", prompt)
-                    print("Output: ", output)
+                    print("Prompt:\n", prompt)
+                    print("Input ids:\n", input_ids)
+                    print("Output:\n", output)
+                    print("Output ids:\n", output_ids)
 
                     if conv.stop_str and isinstance(conv.stop_str, list):
                         stop_str_indices = sorted(
