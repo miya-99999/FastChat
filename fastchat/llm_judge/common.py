@@ -235,7 +235,7 @@ def play_a_match_single(match: MatchSingle, output_file: str):
             f"{model}__{turn}turn.jsonl"
         )
         os.makedirs(os.path.dirname(output_file), exist_ok=True)
-        with open(output_file, "a") as fout:
+        with open(output_file, "a", encoding='utf-8') as fout: # fix encoding issue
             fout.write(json.dumps(result, ensure_ascii=False) + "\n")
 
     return result
@@ -411,7 +411,7 @@ def play_a_match_pair(match: MatchPair, output_file: str):
             f"{model_1}__{model_2}__{turn}turn.jsonl"
         )
         os.makedirs(os.path.dirname(output_file), exist_ok=True)
-        with open(output_file, "a") as fout:
+        with open(output_file, "a", encoding='utf-8') as fout: # fix encoding issue
             fout.write(json.dumps(result, ensure_ascii=False) + "\n")
 
     return result
@@ -731,7 +731,7 @@ def load_pairwise_model_judgments(filename: str):
         filenames = [filename]
 
     for filename in filenames:
-        for line in open(filename):
+        for line in open(filename, encoding='utf-8'): # fix encoding issue
             obj = json.loads(line)
             obj["question_id"] = int(obj["question_id"])
             judge = tuple(obj["judge"])
@@ -781,7 +781,7 @@ def load_single_model_judgments(filename: str):
         filenames = [filename]
 
     for filename in filenames:
-        for line in open(filename):
+        for line in open(filename, encoding='utf-8'): # fix encoding issue
             obj = json.loads(line)
             obj["question_id"] = int(obj["question_id"])
             judge = tuple(obj["judge"])
